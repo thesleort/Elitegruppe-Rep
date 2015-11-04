@@ -5,5 +5,14 @@ public class HelloWorld {
 		System.out.println("HEllo you!");
 		System.out.println("HEllo Everyone!");
 		System.out.println("hej hilsen Osman");
+    	System.out.println("        ****        ************");
+    	System.out.println("      **    **           **");
+    	System.out.println("     **      **          **");
+    	System.out.println("    **        **         **");
+    	System.out.println("    **        **         **");
+    	System.out.println("    **        **         **");
+    	System.out.println("     **      **          **");
+    	System.out.println("      **    **           **");
+    	System.out.println("        ****             **");
 	}
 }
