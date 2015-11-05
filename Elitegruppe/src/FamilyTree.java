@@ -1,0 +1,12 @@
+import ui.Gui;
+
+public class FamilyTree {
+
+	public static void main(String[] args) {
+		System.out.println("Starting program...");
+		Gui gui = new Gui();
+		gui.startGui();
+		System.out.println("Terminated program.");
+	}
+
+}
