@@ -11,13 +11,12 @@ public class TeamGUI{
             File file = new File("names.txt");
             //prints the path to the file
             System.out.println(file.getCanonicalPath());
-            //loads the file
-            FileInputStream ft = new FileInputStream(file);
-
-            DataInputStream in = new DataInputStream(ft);
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+            //loads the file into 
+            FileInputStream fileinnputstream = new FileInputStream(file);
+            DataInputStream innputstream = new DataInputStream(fileinnputstream);
+            BufferedReader br = new BufferedReader(new InputStreamReader(innputstream));
             String strline;
-
+            //processes the file
             while((strline = br.readLine()) != null){
                	String[] parts = strline.split(" ");
                	String[] partname = strline.split("");
