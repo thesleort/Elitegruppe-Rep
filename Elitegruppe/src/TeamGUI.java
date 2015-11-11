@@ -6,8 +6,7 @@ import java.util.Collections;
 
 //defines the class
 public class TeamGUI{
-	//defines the void
-    public static void main(String[] args){
+	public TeamGUI() {
     	//try (says what it does itself
         try{
         	//opens the file with the names in it
@@ -54,5 +53,5 @@ public class TeamGUI{
         }catch(Exception e){
             System.err.println("Error: " + e.getMessage());
         }
-    }
+	}
 }
