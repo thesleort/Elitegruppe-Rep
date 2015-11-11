@@ -6,5 +6,6 @@ public class FamilyTree {
 		System.out.println("Starting program...");
 		Gui gui = new Gui();
 		System.out.println("GUI has started.");
+		TeamGUI teamgui = new TeamGUI();
 	}
 }
