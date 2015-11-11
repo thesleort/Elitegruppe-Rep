@@ -46,6 +46,11 @@ public class TeamGUI{
             Collections.sort(thingtosort);
             System.out.println(thingtosort);
             in.close();
+            
+            PrintWriter writer = new PrintWriter("sortedname.txt", "UTF-8");
+            writer.println(thingtosort);
+            writer.close();
+            
         }catch(Exception e){
             System.err.println("Error: " + e.getMessage());
         }
