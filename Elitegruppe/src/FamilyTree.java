@@ -7,5 +7,4 @@ public class FamilyTree {
 		Gui gui = new Gui();
 		System.out.println("GUI has started.");
 	}
-
 }
