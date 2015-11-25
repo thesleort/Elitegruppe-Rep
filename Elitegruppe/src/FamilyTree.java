@@ -12,8 +12,7 @@ public class FamilyTree {
 		FileOperation fileop = new FileOperation();
 		try {
 			ArrayList<String> names = fileop.FileRead("names.txt");
-			System.out.println("done");
-			fileop.FileWrite(names);
+			fileop.FileWrite(names,"SortedName");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

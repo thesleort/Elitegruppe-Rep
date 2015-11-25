@@ -49,9 +49,9 @@ public class FileOperation {
 		} 
 		return(namesToSort);
 	}
-	public void FileWrite(ArrayList<String> arrayOfNames) throws FileNotFoundException, UnsupportedEncodingException {
+	public void FileWrite(ArrayList<String> arrayOfNames,String fileName) throws FileNotFoundException, UnsupportedEncodingException {
 		Collections.sort(arrayOfNames);
-		PrintWriter writer = new PrintWriter("SortedNames", "UTF-8");
+		PrintWriter writer = new PrintWriter(fileName, "UTF-8");
 		writer.println(arrayOfNames);
 		writer.close();
 	}
