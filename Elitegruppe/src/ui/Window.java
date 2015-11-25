@@ -2,7 +2,7 @@ package ui;
 
 import javax.swing.JFrame;
 
-public class Window extends JFrame{
+public class Window extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public Window() {
@@ -11,6 +11,8 @@ public class Window extends JFrame{
 		window.add(new Gui());
 		window.pack();
 		window.setVisible(true);
+		window.setSize(500, 300);
+		window.setResizable(false);
 	}
 
 }
