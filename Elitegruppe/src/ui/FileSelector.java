@@ -1,19 +1,16 @@
 package ui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JFileChooser;
 
 public class FileSelector extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static File chosenFile;
 
 	public FileSelector() {

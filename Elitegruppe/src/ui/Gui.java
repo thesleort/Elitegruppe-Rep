@@ -2,22 +2,22 @@ package ui;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import base.*;
 
 public class Gui extends JPanel implements ActionListener {
-	static private final String newline = "\n";
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JButton btnNewButton;
 	JTextArea log;
 	FileSelector fileSelector;
