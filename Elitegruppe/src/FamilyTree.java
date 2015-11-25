@@ -13,7 +13,7 @@ public class FamilyTree {
 		try {
 			ArrayList<String> names = fileop.FileRead("names.txt");
 			System.out.println(names);
-			//fileop.Sort(names);
+			fileop.Sort(names);
 			fileop.FileWriteArray(names,"SortedName");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
