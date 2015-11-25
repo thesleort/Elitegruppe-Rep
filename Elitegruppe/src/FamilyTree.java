@@ -6,9 +6,11 @@ import ui.Gui;
 
 public class FamilyTree {
 
+	private static Scanner user_input;
+
 	public static void main(String[] args) {
 		
-		Scanner user_input = new Scanner(System.in);
+		user_input = new Scanner(System.in);
 		String fileName;
 		System.out.print("Filnavn: ");
 		fileName = user_input.next();
