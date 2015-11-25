@@ -11,9 +11,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class FileOperation {
-	public ArrayList FileRead(String fileName) throws IOException {
+	public ArrayList<String> FileRead(String fileName) throws IOException {
 		File file = new File(fileName);
-		FileInputStream FiStream;
 		ArrayList<String> namesToSort = new ArrayList<String>();
 		try {
 			FileInputStream fiStream = new FileInputStream(file);
