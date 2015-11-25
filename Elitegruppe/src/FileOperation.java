@@ -21,24 +21,22 @@ public class FileOperation {
 			BufferedReader br = new BufferedReader(new InputStreamReader(diStream));
 
 			String currentLine;
-			
+
 			while ((currentLine = br.readLine()) != null) {
-				while ((currentLine = br.readLine()) != null) {
-					// spilts each line into a first and last name.
-					String[] parts = currentLine.split(" ");
-					// spilts the first name into letters
-					String[] partname = currentLine.split("");
-					// stores the first letter of the name in "firstname"
-					String firstname = partname[0];
-					// stores the last name in the string "lastname"
-					String lastname = parts[1];
-					// combines the string and prints it.
-					System.out.println(firstname + ". " + lastname);
-					// debudding line
-					// System.out.println(strline);
-				}
-					System.out.println(currentLine);
-					namesToSort.add(currentLine);
+				// spilts each line into a first and last name.
+				String[] parts = currentLine.split(" ");
+				// spilts the first name into letters
+				String[] partname = currentLine.split("");
+				// stores the first letter of the name in "firstname"
+				String firstname = partname[1];
+				// stores the last name in the string "lastname"
+				String lastname = parts[1];
+				// combines the string and prints it.
+				System.out.println(firstname + ". " + lastname);
+				// debudding line
+				// System.out.println(strline);
+				currentLine = firstname + ". " + lastname;
+				namesToSort.add(currentLine);
 
 			}
 			diStream.close();
@@ -46,13 +44,22 @@ public class FileOperation {
 			// TODO Auto-generated catch block
 			System.out.println("There where no file with the name " + fileName);
 			e.printStackTrace();
-		} 
-		return(namesToSort);
+		}
+		return (namesToSort);
 	}
-	public void FileWrite(ArrayList<String> arrayOfNames,String fileName) throws FileNotFoundException, UnsupportedEncodingException {
-		Collections.sort(arrayOfNames);
+
+	public ArrayList<String> Sort(ArrayList<String> listToSort) {
+		Collections.sort(listToSort);
+		return listToSort;
+
+	}
+
+	public void FileWriteArray(ArrayList<String> arrayOfNames, String fileName)
+			throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter writer = new PrintWriter(fileName, "UTF-8");
-		writer.println(arrayOfNames);
+		for (int i = 0; i < arrayOfNames.size(); i++) {
+			writer.println(arrayOfNames.get(i));
+		}
 		writer.close();
 	}
 }
