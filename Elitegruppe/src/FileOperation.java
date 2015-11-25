@@ -40,8 +40,10 @@ public class FileOperation {
 			}
 			diStream.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			System.out.println("There where no file with the name " + fileName);
+			System.out.println("Shutting program down.");
+			//Programmet afslutter, da det ikke kan finde filen med det pågældende navn.
+			System.exit(0);
 			e.printStackTrace();
 		}
 		return (namesToSort);
