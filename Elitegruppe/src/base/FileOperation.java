@@ -33,8 +33,6 @@ public class FileOperation {
 				String lastname = parts[1];
 				// combines the string and prints it.
 				System.out.println(firstname + ". " + lastname);
-				// debudding line
-				// System.out.println(strline);
 				currentLine = firstname + ". " + lastname;
 				namesToSort.add(currentLine);
 
@@ -47,16 +45,16 @@ public class FileOperation {
 			System.exit(0);
 			e.printStackTrace();
 		}
-		return (namesToSort);
+		return namesToSort;
 	}
 
-	public ArrayList<String> Sort(ArrayList<String> listToSort) {
+	public ArrayList<String> Sort(ArrayList<String> listToSort) { //Sortering af liste.
 		Collections.sort(listToSort);
 		return listToSort;
 
 	}
 
-	public void FileWriteArray(ArrayList<String> arrayOfNames, String fileName)
+	public void FileWriteArray(ArrayList<String> arrayOfNames, String fileName) //Skrivning af ny fil.
 			throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter writer = new PrintWriter(fileName, "UTF-8");
 		for (int i = 0; i < arrayOfNames.size(); i++) {
