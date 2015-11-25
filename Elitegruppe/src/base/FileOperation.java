@@ -1,3 +1,5 @@
+package base;
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -11,12 +13,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class FileOperation {
-	public ArrayList FileRead(String fileName) throws IOException {
-		File file = new File(fileName);
-		FileInputStream FiStream;
-		ArrayList<String> namesToSort = new ArrayList<String>();
+	ArrayList<String> namesToSort;
+
+	public ArrayList<String> FileRead(File fileName) throws IOException {
+
 		try {
-			FileInputStream fiStream = new FileInputStream(file);
+
+			namesToSort = new ArrayList<String>();
+			FileInputStream fiStream = new FileInputStream(fileName);
 			DataInputStream diStream = new DataInputStream(fiStream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(diStream));
 
@@ -32,32 +36,34 @@ public class FileOperation {
 				// stores the last name in the string "lastname"
 				String lastname = parts[1];
 				// combines the string and prints it.
-				System.out.println(firstname + ". " + lastname);
-				// debudding line
-				// System.out.println(strline);
+				// System.out.println(firstname + ". " + lastname);
 				currentLine = firstname + ". " + lastname;
 				namesToSort.add(currentLine);
 
 			}
 			diStream.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			System.out.println("There where no file with the name " + fileName);
+			System.out.println("Shutting program down.");
 			e.printStackTrace();
 		}
-		return (namesToSort);
+		return namesToSort;
 	}
 
-	public ArrayList<String> Sort(ArrayList<String> listToSort) {
+	public ArrayList<String> Sort(ArrayList<String> listToSort) { // Sortering
+																	// af liste.
 		Collections.sort(listToSort);
 		return listToSort;
 
 	}
 
-	public void FileWriteArray(ArrayList<String> arrayOfNames, String fileName)
+	public void FileWriteArray(ArrayList<String> arrayOfNames, String fileName) // Skrivning
+																				// af
+																				// ny
+																				// fil.
 			throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter writer = new PrintWriter(fileName, "UTF-8");
-		for (int i = 0; i < arrayOfNames.size(); i++) {
+		for (int i = 0; i > arrayOfNames.size(); i++) {
 			writer.println(arrayOfNames.get(i));
 		}
 		writer.close();
