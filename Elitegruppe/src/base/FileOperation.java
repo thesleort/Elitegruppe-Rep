@@ -27,17 +27,34 @@ public class FileOperation {
 			String currentLine;
 
 			while ((currentLine = br.readLine()) != null) {
+				int lineLength;
 				// spilts each line into a first and last name.
 				String[] parts = currentLine.split(" ");
 				// spilts the first name into letters
 				String[] partname = currentLine.split("");
 				// stores the first letter of the name in "firstname"
 				String firstname = partname[1];
+				lineLength = parts.length;
 				// stores the last name in the string "lastname"
-				String lastname = parts[1];
+				String lastname;
+				String middlename;
+				if (lineLength > 2) {
+					middlename = parts[1];
+					for (int i = 2; i < lineLength - 1; i++) {
+						middlename = middlename + " " + parts[i];
+						System.out.println(middlename);
+
+					}
+					middlename = middlename + " ";
+					lastname = parts[parts.length - 1];
+					System.out.println(lastname);
+				} else {
+					middlename = "";
+					lastname = parts[1];
+				}
 				// combines the string and prints it.
 				// System.out.println(firstname + ". " + lastname);
-				currentLine = firstname + ". " + lastname;
+				currentLine = firstname + ". " + middlename +lastname;
 				namesToSort.add(currentLine);
 
 			}

@@ -14,5 +14,4 @@ public class Window extends JFrame {
 		window.setSize(500, 300);
 		window.setResizable(false);
 	}
-
 }
