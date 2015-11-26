@@ -12,24 +12,19 @@ public class FileSelector extends JFrame {
 
 	public FileSelector() {
 		JFileChooser fileChooser = new JFileChooser();
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("Family Tree files", "ff"); // Programmet
-																									// leder
-																									// efter
-																									// filer
-		fileChooser.setFileFilter(filter); // der slutter med .ff
-		int returnVal = fileChooser.showOpenDialog(null); // Hvis der bliver
-															// trykket cancel,
-															// retunerer
-															// programmet ikke
-															// noget.
-		if (returnVal == JFileChooser.APPROVE_OPTION) { // Da swing ikke
-														// tillader
-														// multi-threading,
-														// venter fileChooser
-														// her på,
-			chosenFile = fileChooser.getSelectedFile(); // at man vælger en fil.
-			System.out.println("You chose to open this file: " + fileChooser.getSelectedFile()); // til
-																									// debugging
+		// Programmet leder efter filer der slutter med .ff
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("Family Tree files, .ff", "ff");
+
+		fileChooser.setFileFilter(filter);
+		int returnVal = fileChooser.showOpenDialog(null);
+		// Hvis der bliver trykket cancel, retunerer programmet ikke noget.
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
+			// Da swing ikke tillader multi-threading, venter fileChooser her
+			// på, at man vælger en fil vha. APPROVE_OPTION.
+			chosenFile = fileChooser.getSelectedFile();
+			// til debugging
+			System.out.println("You chose to open this file: " + fileChooser.getSelectedFile());
+
 		} else if (returnVal == JFileChooser.CANCEL_OPTION) {
 			System.out.println("Cancel was selected");
 			chosenFile = null;

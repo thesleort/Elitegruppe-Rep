@@ -12,7 +12,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class FileOperation {
+public class FileOperation<E> {
 	ArrayList<String> namesToSort;
 
 	public ArrayList<String> FileRead(File fileName) throws IOException {
@@ -28,9 +28,9 @@ public class FileOperation {
 
 			while ((currentLine = br.readLine()) != null) {
 				int lineLength;
-				// spilts each line into a first and last name.
+				// splits each line into a first and last name.
 				String[] parts = currentLine.split(" ");
-				// spilts the first name into letters
+				// splits the first name into letters
 				String[] partname = currentLine.split("");
 				// stores the first letter of the name in "firstname"
 				String firstname = partname[1];
@@ -47,14 +47,12 @@ public class FileOperation {
 					}
 					middlename = middlename + " ";
 					lastname = parts[parts.length - 1];
-					System.out.println(lastname);
 				} else {
 					middlename = "";
 					lastname = parts[1];
 				}
-				// combines the string and prints it.
-				// System.out.println(firstname + ". " + lastname);
-				currentLine = firstname + ". " + middlename +lastname;
+				// Kombinerer det hele til én streng.
+				currentLine = firstname + ". " + middlename + lastname;
 				namesToSort.add(currentLine);
 
 			}
@@ -67,18 +65,17 @@ public class FileOperation {
 		return namesToSort;
 	}
 
-	public ArrayList<String> Sort(ArrayList<String> listToSort) { // Sortering
-																	// af liste.
+	public ArrayList<String> Sort(ArrayList<String> listToSort) {
+		// Sortering af liste.
 		Collections.sort(listToSort);
 		return listToSort;
 
 	}
 
-	public void FileWriteArray(ArrayList<String> arrayOfNames, String fileName) // Skrivning
-																				// af
-																				// ny
-																				// fil.
+	
+	public void FileWriteArray(ArrayList<String> arrayOfNames, String fileName)
 			throws FileNotFoundException, UnsupportedEncodingException {
+		// Skrivning af ny fil.
 		PrintWriter writer = new PrintWriter(fileName, "UTF-8");
 		for (int i = 0; i > arrayOfNames.size(); i++) {
 			writer.println(arrayOfNames.get(i));

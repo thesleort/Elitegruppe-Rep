@@ -54,17 +54,19 @@ public class Gui extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		FileOperation fileop = new FileOperation();
-		if (e.getSource() == btnNewButton) { 				// Hvis knappen bliver trykket på,
-			System.out.println("Waiting for file select"); 	// starter følgende event:
-														
+		FileOperation<Object> fileop = new FileOperation<Object>();
+
+		if (e.getSource() == btnNewButton) {
+			// Hvis knappen bliver trykket på,starter følgende event:
+			System.out.println("Waiting for file select");
+
 			fileSelector = new FileSelector();
 			try {
 				names = fileop.FileRead(FileSelector.chosenFile);
 				fileop.FileWriteArray(names, "SortedName");
 			} catch (IOException e1) {
 				e1.printStackTrace();
-			} 
+			}
 		} else if (e.getSource() == btnSort) {
 			try {
 				names = fileop.Sort(names);
@@ -80,10 +82,9 @@ public class Gui extends JPanel implements ActionListener {
 					textArea.append(names.get(i) + newline);
 				}
 				textArea.append("---------------------" + newline);
-				System.out.println("Printing");
+				System.out.println("List printed");
 			} catch (NullPointerException e2) {
 				System.out.println("There was no list to sort");
-				// TODO: handle exception
 				JOptionPane.showMessageDialog(this, "Der er ikke blevet valgt en fil endnu", "Inane error",
 						JOptionPane.ERROR_MESSAGE);
 			}
