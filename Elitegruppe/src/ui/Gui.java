@@ -44,6 +44,7 @@ public class Gui extends JPanel implements ActionListener {
 		add(btnNewButton);
 
 		this.textArea = new TextArea();
+		this.textArea.setEditable(false);
 		add(textArea);
 
 		this.btnSort = new JButton("Sortér");
@@ -88,10 +89,11 @@ public class Gui extends JPanel implements ActionListener {
 			}
 		} else if (e.getSource() == btnExec) {
 			try {
+				textArea.setText("");
 				for (int i = 0; i < names.size(); i++) {
 					textArea.append(names.get(i) + newline);
 				}
-				textArea.append("---------------------" + newline);
+				
 				System.out.println("List printed");
 			} catch (NullPointerException e2) {
 				System.out.println("There was no list to sort");
