@@ -8,11 +8,15 @@ import javax.swing.JFileChooser;
 public class FileSelector extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	public static File chosenFile;
+	public static File chosenFile, path;
 
 	public FileSelector() {
-		JFileChooser fileChooser = new JFileChooser();
+		
 		// Programmet leder efter filer der slutter med .ff
+		
+	}
+	public void FileSelect() {
+		JFileChooser fileChooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Family Tree files, .ff", "ff");
 
 		fileChooser.setFileFilter(filter);
@@ -29,6 +33,23 @@ public class FileSelector extends JFrame {
 			System.out.println("Cancel was selected");
 			chosenFile = null;
 		}
+	}
+	public File FileSave() {
+		JFileChooser fileChooser = new JFileChooser();
+		// Programmet leder efter filer der slutter med .ff
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("Family Tree files, .ff", "ff");
+
+		fileChooser.setFileFilter(filter);
+		int returnVal = fileChooser.showSaveDialog(null);
+		// Hvis der bliver trykket cancel, retunerer programmet ikke noget.
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
+			path = fileChooser.getSelectedFile().getAbsoluteFile();
+			path = new File(path+".ff");
+		} else if (returnVal == JFileChooser.CANCEL_OPTION) {
+			System.out.println("Cancel was selected");
+			chosenFile = null;
+		}
+		return path;
 	}
 
 }

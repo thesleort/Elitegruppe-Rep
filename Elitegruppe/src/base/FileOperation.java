@@ -1,10 +1,14 @@
 package base;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -12,7 +16,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class FileOperation<E> {
+public class FileOperation {
 	ArrayList<String> namesToSort;
 
 	public ArrayList<String> FileRead(File fileName) throws IOException {
@@ -72,14 +76,29 @@ public class FileOperation<E> {
 
 	}
 
-	
-	public void FileWriteArray(ArrayList<String> arrayOfNames, String fileName)
+	public void FileWriteArray(ArrayList<String> arrayOfNames, File fileName)
 			throws FileNotFoundException, UnsupportedEncodingException {
 		// Skrivning af ny fil.
-		PrintWriter writer = new PrintWriter(fileName, "UTF-8");
-		for (int i = 0; i > arrayOfNames.size(); i++) {
-			writer.println(arrayOfNames.get(i));
+		System.out.println(arrayOfNames);
+
+		try {
+			FileWriter writer = new FileWriter(fileName);
+			BufferedWriter bw = new BufferedWriter(writer);
+			for (int i = 0; i < arrayOfNames.size(); i++) {
+				bw.write(arrayOfNames.get(i));
+				System.out.println(arrayOfNames.get(i));
+				bw.newLine();
+			}
+			bw.flush();
+			bw.close();
+			writer.close();
+
+			System.out.println("Done");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		writer.close();
+		// fiStream.println(arrayOfNames.get(i));
 	}
+
 }
