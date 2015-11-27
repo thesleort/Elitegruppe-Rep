@@ -21,7 +21,7 @@ import java.awt.FlowLayout;
 
 public class Gui extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	JButton btnNewButton, btnSort, btnExec,btnSave;
+	JButton btnNewButton, btnSort, btnExec, btnSave;
 	JTextArea log;
 	FileSelector fileSelector;
 	ArrayList<String> names;
@@ -38,7 +38,8 @@ public class Gui extends JPanel implements ActionListener {
 
 		this.btnNewButton = new JButton("Vælg fil"); // knap
 		btnNewButton.addActionListener(this);
-//		btnNewButton.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		// btnNewButton.setBorder(BorderFactory.createEmptyBorder(20, 20, 20,
+		// 20));
 
 		add(btnNewButton);
 
@@ -52,11 +53,11 @@ public class Gui extends JPanel implements ActionListener {
 		this.btnExec = new JButton("Udskriv");
 		btnExec.addActionListener(this);
 		add(btnExec);
-		
+
 		this.btnSave = new JButton("Gem fil");
 		btnSave.addActionListener(this);
 		add(btnSave);
-
+		fileSelector = new FileSelector();
 	}
 
 	@Override
@@ -67,13 +68,13 @@ public class Gui extends JPanel implements ActionListener {
 			// Hvis knappen bliver trykket på,starter følgende event:
 			System.out.println("Waiting for file select");
 
-			fileSelector = new FileSelector();
 			fileSelector.FileSelect();
 			try {
 				names = fileop.FileRead(FileSelector.chosenFile);
-//				fileop.FileWriteArray(names, "SortedName");
 			} catch (IOException e1) {
 				e1.printStackTrace();
+			} catch (NullPointerException e1) {
+				System.out.println("No file was chosen");
 			}
 		} else if (e.getSource() == btnSort) {
 			try {
@@ -81,7 +82,8 @@ public class Gui extends JPanel implements ActionListener {
 				System.out.println("Sorting list");
 			} catch (NullPointerException e2) {
 				System.out.println("There was no list to sort");
-				JOptionPane.showMessageDialog(this, "Der er ikke blevet valgt en fil endnu", "Inane error",
+				JOptionPane.showMessageDialog(this,
+						"Der er ikke blevet valgt en fil endnu", "Inane error",
 						JOptionPane.ERROR_MESSAGE);
 			}
 		} else if (e.getSource() == btnExec) {
@@ -93,20 +95,29 @@ public class Gui extends JPanel implements ActionListener {
 				System.out.println("List printed");
 			} catch (NullPointerException e2) {
 				System.out.println("There was no list to sort");
-				JOptionPane.showMessageDialog(this, "Der er ikke blevet valgt en fil endnu", "Inane error",
+				JOptionPane.showMessageDialog(this,
+						"Der er ikke blevet valgt en fil endnu", "Inane error",
 						JOptionPane.ERROR_MESSAGE);
 			}
 		} else if (e.getSource() == btnSave) {
 
-			File path = fileSelector.FileSave();
+			
 			try {
-				System.out.println(names);
-				fileop.FileWriteArray(names, path);
+				if (names == null) {
+					JOptionPane.showMessageDialog(this,
+							"Der er ikke nogen fil at gemme", "Inane error",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
+					File path = fileSelector.FileSave();
+					fileop.FileWriteArray(names, path);
+				}
 			} catch (FileNotFoundException | UnsupportedEncodingException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println("No file was saved");
+				// e1.printStackTrace();
+			} catch (NullPointerException e1) {
+				// TODO: handle exception
 			}
-			//fileop.FileWriteArray(names, fileName);
 		}
 
 	}

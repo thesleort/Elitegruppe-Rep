@@ -15,12 +15,12 @@ public class FileSelector extends JFrame {
 		// Programmet leder efter filer der slutter med .ff
 		
 	}
-	public void FileSelect() {
+	public File FileSelect() {
 		JFileChooser fileChooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Family Tree files, .ff", "ff");
 
 		fileChooser.setFileFilter(filter);
-		int returnVal = fileChooser.showOpenDialog(null);
+		int returnVal = fileChooser.showOpenDialog(this);
 		// Hvis der bliver trykket cancel, retunerer programmet ikke noget.
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			// Da swing ikke tillader multi-threading, venter fileChooser her
@@ -32,7 +32,9 @@ public class FileSelector extends JFrame {
 		} else if (returnVal == JFileChooser.CANCEL_OPTION) {
 			System.out.println("Cancel was selected");
 			chosenFile = null;
+			return null;
 		}
+		return path;
 	}
 	public File FileSave() {
 		JFileChooser fileChooser = new JFileChooser();
@@ -40,7 +42,7 @@ public class FileSelector extends JFrame {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Family Tree files, .ff", "ff");
 
 		fileChooser.setFileFilter(filter);
-		int returnVal = fileChooser.showSaveDialog(null);
+		int returnVal = fileChooser.showSaveDialog(this);
 		// Hvis der bliver trykket cancel, retunerer programmet ikke noget.
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			path = fileChooser.getSelectedFile().getAbsoluteFile();
@@ -48,6 +50,7 @@ public class FileSelector extends JFrame {
 		} else if (returnVal == JFileChooser.CANCEL_OPTION) {
 			System.out.println("Cancel was selected");
 			chosenFile = null;
+			return null;
 		}
 		return path;
 	}
